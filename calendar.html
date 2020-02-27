@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CISC325</title>
+	<meta charset="utf-8" />
+	<meta name="Yu" content=""/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/style.css">		
+	<link rel="stylesheet" href="css/responsive.css">	
+	<link rel="stylesheet" href="css/calendar.css">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>		
+				<li><a href="web.html">Home</a></li>
+				<li><a href="./login.html">Login</a></li>
+			</ul>		
+		</nav>
+	</header>
+
+	<article id="main-content">
+		<div class="month">
+			<ul>
+				<li class="prev">&#10094;</li>
+				<li class="next">&#10095;</li>
+				<li>
+					<p id="month"></p>
+					<p id = "year" style="font-size:18px"></p>
+				</li>
+				<script>
+					var dict = {
+						1 : "January",
+						2 : "February",
+						3 : "March",
+						4 : "April",
+						5 : "May",
+						6 : "June",
+						7 : "July",
+						8 : "August",
+						9 : "September",
+						10 : "October",
+						11 : "November",
+						12 : "December",
+					};
+					var time = new Date();
+					var monthNum = time.getMonth() + 1 ;
+					var year = time.getFullYear();
+					var month = dict[monthNum];
+					document.getElementById("month").innerHTML = month;
+					document.getElementById("year").innerHTML = year;
+				</script>
+			</ul>
+		</div>
+
+		<ul class="weekdays">
+			<li>Mo</li>
+			<li>Tu</li>
+			<li>We</li>
+			<li>Th</li>
+			<li>Fr</li>
+			<li>Sa</li>
+			<li>Su</li>
+		</ul>
+
+		<ul class="days">
+			<li><button>1</button></li>
+			<li><button>2</button></li>
+			<li><button>3</button></li>
+			<li><button>4</button></li>
+			<li><button>5</button></li>
+			<li><button>6</button></li>
+			<li><button>7</button></li>
+			<li><button>8</button></li>
+			<li><button>9</button></li>
+			<li><button>10</button></li>
+			<li><button>11</button></li>
+			<li><button>12</button></li>
+			<li><button>13</button></li>
+			<li><button>14</button></li>
+			<li><button>15</button></li>
+			<li><button>16</button></li>
+			<li><button>17</button></li>
+			<li><button>18</button></span></li>
+			<li><button>19</button></li>
+		</ul>
+	</article> <!-- #main-content -->
+	
+	<footer>
+		<a href="https://queensu.ca">
+				<img src="./img/queensu.jpg" alt="queens university"/>
+		</a>
+	</footer>
+	
+</body>
+</html>
