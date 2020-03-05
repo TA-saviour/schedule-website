@@ -8,7 +8,6 @@
 	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/style.css">		
 	<link rel="stylesheet" href="css/responsive.css">	
-	<link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
@@ -23,21 +22,37 @@
 
 	<article id="main-content">
 	
-		<h1 id="page-title">website name</h1>
-		
-		<h1>Login</h1>
+		<div class="month">
+		  <ul>
+			<li class="prev">&#10094;</li>
+			<li class="next">&#10095;</li>
+			<li>August<br><span style="font-size:18px">2017</span></li>
+		  </ul>
+		 </div>
 
-			<form action="/action_page.php">
-				<label for="fname">First name:</label>
-				<input type="text" id="fname" name="fname"><br><br>
-				<label for="lname">Last name:</label>
-				<input type="text" id="lname" name="lname"><br><br>
-				<button style ="border-radius: 15%" ; class="loginButton">Submit</button>
-			</form>
+		<ul class="weekdays">
+		  <li>Mo</li>
+		  <li>Tu</li>
+		  <li>We</li>
+		  <li>Th</li>
+		  <li>Fr</li>
+		  <li>Sa</li>
+		  <li>Su</li>
+		</ul>
 
-			<p>Click the "Submit" button to login</p>
-		
-		
+		<ul class="days">
+		  <li>1</li>
+		  <li>2</li>
+		  <li>3</li>
+		  <li>4</li>
+		  <li>5</li>
+		  <li>6</li>
+		  <li>7</li>
+		  <li>8</li>
+		  <li>9</li>
+		  <li><span class="active">10</span></li>
+		  <li>11</li>
+		</ul>
 	
 	</article> <!-- #main-content -->
 	

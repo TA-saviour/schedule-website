@@ -67,6 +67,7 @@
 			var today = new Date();
 			var month = today.getMonth() + 1;
 			var year = today.getFullYear();
+			var todayNum = today.getDate();
 			document.getElementById("month").innerHTML = dict[month];
 			document.getElementById("year").innerHTML = year;
 			
@@ -123,12 +124,22 @@
 				for(var i = 0;i < dayNum;i++){
 					var newNode = document.createElement("LI");
 					var buttonNode = document.createElement("BUTTON");
-					var buttonText = document.createTextNode(i+1);
-					buttonNode.appendChild(buttonText);
+					
+					buttonNode.setAttribute('class', 'dates');
+					buttonNode.textContent = i+1;
+					
+					if((i+1) == todayNum){
+						buttonNode.id = 'today';
+						buttonNode.style.fontWeight = 'bold';
+						
+					}
+					
 					newNode.appendChild(buttonNode);
 					document.getElementById("days").appendChild(newNode);
 				}
+				setButtons();
 			}
+			
 			days();
 		</script>
 	
@@ -136,8 +147,53 @@
 	
 	<footer>
 		<div id = "timeSlots">
-			<h1>time slots of the day you are viewing go here.</h1>
+			<ul>
+				<li id = "slots"></li>
+			</ul>
 		</div>
+		
+		<script>
+			setButtons();
+			function setButtons(){
+				var el = document.getElementsByClassName("dates");
+				for(var i = 0;i < el.length;i++){
+					el[i].addEventListener("mouseover",showSlots);	
+					el[i].addEventListener("mouseout",closeSlots);
+					el[i].addEventListener("click",clickDates);
+				}
+			}
+			
+			function showSlots(){
+				document.getElementById("slots").innerHTML = "time slots informatiomn";
+			}
+			
+			function closeSlots(){
+				document.getElementById("slots").innerHTML = "";	
+			}
+			
+			function clickDates(){
+				var target = event.target || event.srcElement;
+				var info = year + '-' + month + '-' + target.textContent;
+				sessionStorage.setItem("year-month-day",info)
+				var newPage = window.open("./signup.html", "_self");
+			}
+		</script>
+		
+		<script>
+			//read local data file
+			function FileHelper(){
+				FileHelper.readStringFromFileAtPath = function(pathOfFileToReadFrom){
+					var request = new XMLHttpRequest();
+					request.open("GET", pathOfFileToReadFrom, false);
+					request.send(null);
+					var returnValue = request.responseText;
+					return returnValue;
+				}
+			}
+			var text = FileHelper.readStringFromFileAtPath("./data/event.txt");
+			document.getElementById("year").innerHTML = text;
+		</script>
+		
 	</footer>
 	
 	
