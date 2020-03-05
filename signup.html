@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CISC325</title>
+	<meta charset="utf-8" />
+	<meta name="Yu" content=""/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/style.css">		
+	<link rel="stylesheet" href="css/responsive.css">	
+	<link rel="stylesheet" href="css/signup.css">	
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>		
+				<li><a href="./web.html">Home</a></li>
+				<li><a href="./login.html">Login</a></li>
+			</ul>		
+		</nav>
+	</header>
+	
+	<article id="main-content">
+		
+		<form action="./web.html" id = "form">
+			<h1 style = "font-size:18px; margin-bottom: 15px;">Complete your information to sign up an appointment.</h1>
+			<label for="Sname">Student name:</label>
+			<input type="text" id="Sname" name="Sname"><br><br>
+			<label for="date">Date:</label>
+			<input type="text" id="date" name="date"><br><br>
+			<label for="ta">TA:</label>
+			<select id="ta">
+				<option value="TA1">Jack</option>
+				<option value="TA2">Tom</option>
+				<option value="TA3">Kate</option>
+				<option value="TA4">Jane</option>
+			</select><br></br>
+			<label for="time">Time:</label>
+			<select id="time">
+				<option value="8:30">8:30 - 10:30</option>
+				<option value="11:30">11:30 - 1:30</option>
+				<option value="3:30">3:30 - 5:30</option>
+				<option value="5:30">5:30 - 6:30</option>
+			</select><br></br>
+			<label for="question">Question Discription</label>
+			<textarea id="question" name="question"></textarea>
+			<br></br>
+			<button style ="border-radius: 15%" ; id="signUpButton">Submit</button>
+		</form>
+		
+		<div id = "verticalLine"></div>
+		
+		<table id = "timeSlots" align="right">
+			<tr>
+				<th id = "tableTitle"></th>
+			</tr>
+			<tr>
+				<td>Jack(8:30 - 10:30)</td>
+			</tr>
+			<tr>
+				<td>  </td>
+			</tr>
+			<tr>
+				<td>Jane(3:30 - 5:30)</td>
+			</tr>
+			<tr>
+				<td>kate(5:30 - 6:30)</td>
+			</tr>
+			<tr>
+				<td>  </td>
+			</tr>
+			<tr>
+				<td>  </td>
+			</tr>
+			<tr>
+				<td>  </td>
+			</tr>
+		</table>
+			
+	</article> <!-- #main-content -->
+	
+	<footer>
+		<div>
+		
+		</div>
+	</footer>
+	
+	<script>
+		var dict = {
+				1 : "January",
+				2 : "February",
+				3 : "March",
+				4 : "April",
+				5 : "May",
+				6 : "June",
+				7 : "July",
+				8 : "August",
+				9 : "September",
+				10 : "October",
+				11 : "November",
+				12 : "December"
+		}	
+		var info = sessionStorage.getItem("year-month-day").split("-");
+		var date = "Scheduel for " + dict[info[1]] + " " + info[2];
+		document.getElementById("date").setAttribute('value',sessionStorage.getItem("year-month-day"));
+		document.getElementById("tableTitle").innerHTML = date;
+	</script>
+	
+</body>
+</html>

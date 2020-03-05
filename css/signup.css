@@ -1,0 +1,59 @@
+#main-content{
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+#form{
+	width: 50%;	
+	background-color: white;
+}
+#timeScrollBox{
+	list-style-type : none;
+	height: 100px;
+	overflow: hidden;
+	margin-left: -31px;
+	margin-top: 0px;
+}
+#question{
+	width: 200px;	
+	height: 100px;
+	vertical-align: top;
+	resize: none;
+}
+#signUpButton{
+	font-size: 17px;
+	border: 1px solid black;
+}
+#signUpButton:hover{
+	transform: scale(1.1);
+	transition-duration: 0.4s;
+}
+#signUpButton:focus{
+	outline: none;
+}
+#verticalLine{
+	border-left: 2px solid black;
+	height: 500px;
+	left: 40%;
+	margin-left: -1px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#timeSlots{
+	width: 50%;
+	margin-right: 0px;
+	margin-left: auto;
+	margin-top: 80px;
+	margin-bottom: auto;
+}
+
+#timeSlots tr td{
+	height: 20px;	
+	text-align: center;
+}
+#timeSlots tr td:hover{
+	display: block;
+	background-color: #cccccc;
+	transition-duration: 0.2s;
+	border: 1px solid white;
+}
