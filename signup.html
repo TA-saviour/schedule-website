@@ -15,7 +15,7 @@
 	<header>
 		<nav>
 			<ul>		
-				<li><a href="./web.html">Home</a></li>
+				<li><a href="./index.html">Home</a></li>
 				<li><a href="./login.html">Login</a></li>
 			</ul>		
 		</nav>
@@ -23,8 +23,8 @@
 	
 	<article id="main-content">
 		
-		<form action="./web.html" id = "form">
-			<h1 style = "font-size:18px; margin-bottom: 15px;">Complete your information to sign up an appointment.</h1>
+		<form action="./index.html" id = "form">
+			<h1 style = "font-size:18px; margin-bottom: 15px;">Complete your information to sign up for an appointment.</h1>
 			<label for="Sname">Student name:</label>
 			<input type="text" id="Sname" name="Sname"><br><br>
 			<label for="date">Date:</label>
@@ -43,7 +43,7 @@
 				<option value="3:30">3:30 - 5:30</option>
 				<option value="5:30">5:30 - 6:30</option>
 			</select><br></br>
-			<label for="question">Question Discription</label>
+			<label for="question">Question Description</label>
 			<textarea id="question" name="question"></textarea>
 			<br></br>
 			<button style ="border-radius: 15%" ; id="signUpButton">Submit</button>
@@ -65,7 +65,7 @@
 				<td>Jane(3:30 - 5:30)</td>
 			</tr>
 			<tr>
-				<td>kate(5:30 - 6:30)</td>
+				<td>Kate(5:30 - 6:30)</td>
 			</tr>
 			<tr>
 				<td>  </td>
@@ -102,7 +102,7 @@
 				12 : "December"
 		}	
 		var info = sessionStorage.getItem("year-month-day").split("-");
-		var date = "Scheduel for " + dict[info[1]] + " " + info[2];
+		var date = "Schedule for " + dict[info[1]] + " " + info[2];
 		document.getElementById("date").setAttribute('value',sessionStorage.getItem("year-month-day"));
 		document.getElementById("tableTitle").innerHTML = date;
 	</script>
