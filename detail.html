@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CISC325</title>
+	<meta charset="utf-8" />
+	<meta name="Yu" content=""/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/style.css">		
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/detail.css">
+	<script src="./js/data.js"></script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>		
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./login.html">Login</a></li>
+			</ul>		
+		</nav>
+	</header>
+
+	<article id="main-content">
+	
+		<div id = "main">
+			<h2 id = "title">Question detail:<h2>
+			<textarea id="detail" readonly>write something.</textarea>
+		</div>
+	
+	</article> <!-- #main-content -->
+	<script>
+		
+		var str = sessionStorage.getItem("detail");	
+		document.getElementById("detail").innerHTML = str;
+		
+		
+	</script>
+	<footer>
+		
+	</footer>
+	
+</body>
+</html>

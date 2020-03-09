@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CISC325</title>
+	<meta charset="utf-8" />
+	<meta name="Yu" content=""/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/style.css">		
+	<link rel="stylesheet" href="css/responsive.css">	
+	<link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>		
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./login.html">Login</a></li>
+			</ul>		
+		</nav>
+	</header>
+
+	<article id="main-content">
+		
+		<h1>Login</h1>
+
+			<div>
+				<label for="fname">First name:</label>
+				<input type="text" id="fname" name="fname"><br><br>
+				<label for="lname">Last name:</label>
+				<input type="text" id="lname" name="lname"><br><br>
+				<button style ="border-radius: 15%;" ; class="loginButton" onclick = "login()">Login</button>
+			</div>
+
+			<p>submit full name to log in.</p>
+		
+		
+	
+	</article> <!-- #main-content -->
+	<script>
+		
+		var taList = ["Jane Clark","Jack Ma","Kate Barr"];
+		
+		function login(){
+			var userName =  document.getElementById("fname").value + " " + document.getElementById("lname").value;
+			sessionStorage.setItem("user",userName);
+			if(taList.includes(userName) == true){
+				window.location.href = "./taScheduel.html";
+			}else{
+				window.location.href = "./studentScheduel.html";
+			}
+		}
+	</script>
+	<footer>
+		<a href="https://queensu.ca">
+				<img src="./img/queensu.jpg" alt="queens university"/>
+		</a>
+	</footer>
+	
+</body>
+</html>
