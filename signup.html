@@ -27,15 +27,16 @@
 		
 		<div id = "form">
 			<h1 style = "font-size:18px; margin-bottom: 15px;">Complete your information to sign up for an appointment.</h1>
-			<label for="Sname">Student name:</label>
+			<label for="Sname">Student:</label>
 			<input type="text" id="Sname" name="Sname" value="name"><br><br>
 			<label for="date">Date:</label>
 			<input type="text" id="date" name="date" readonly><br><br>
 			<label for="ta">Instructor:</label>
-			<input type="text" id="ta" name="ta" readonly><br><br>
+			<input type="text" id="inst" name="inst" readonly><br><br>
 			<label for="time">Time:</label>
 			<input type="text" id="time" name="time" readonly><br><br>
 			<label for="question">(Optional) Discussion Topic Question/Description:</label>
+			<textarea id="question" name="question"></textarea>
 			<br></br>
 			<button style ="border-radius: 15%" ; id="signUpButton" onclick = "submit()">Submit</button>
 		</div>
