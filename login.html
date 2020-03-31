@@ -46,9 +46,9 @@
 			var userName =  document.getElementById("fname").value + " " + document.getElementById("lname").value;
 			sessionStorage.setItem("user",userName);
 			if(taList.includes(userName) == true){
-				window.location.href = "./taScheduel.html";
+				window.location.href = "./instructorSchedule.html";
 			}else{
-				window.location.href = "./studentScheduel.html";
+				window.location.href = "./studentSchedule.html";
 			}
 		}
 	</script>

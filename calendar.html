@@ -195,7 +195,11 @@
 				}
 				for(var i=0;i<count.length;i++){
 					if(count[i] != 0){
-						str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ", " + count[i] + " people in queue.<br>";	
+						if (count[i] == 1){
+							str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ", " + count[i] + " person in queue.<br>";	
+						} else {
+							str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ", " + count[i] + " people in queue.<br>";	
+						}
 					}
 				}
 				if(str != ""){
