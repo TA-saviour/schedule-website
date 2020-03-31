@@ -7,7 +7,8 @@
 	<meta name="Yu" content=""/>
 	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
 	<link rel="stylesheet" href="css/style.css">		
-	<link rel="stylesheet" href="css/responsive.css">	
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/detail.css">
 	<script src="./js/data.js"></script>
 </head>
 
@@ -23,27 +24,21 @@
 
 	<article id="main-content">
 	
-		<h1 id="page-title">CISC 325 Instructor Schedule</h1>
-		
-		<section>
-			<h2><a href="./calendar.html">Calendar and Sign Up</a></h2>
-				
-		</section>
-
-		<section>
-			<h2>TA List</h2>
-			<ul>
-				<li><a href="./TAinfo1.html">Jane Clark</a></li>
-				<li><a href="./TAinfo2.html">Kate Barr</a></li>
-			</ul>
-		</section>
+		<div id = "main">
+			<h2 id = "title">Question detail:<h2>
+			<textarea id="detail" readonly>write something.</textarea>
+		</div>
 	
 	</article> <!-- #main-content -->
-	
+	<script>
+		
+		var str = sessionStorage.getItem("detail");	
+		document.getElementById("detail").innerHTML = str;
+		
+		
+	</script>
 	<footer>
-		<a href="https://queensu.ca">
-				<img src="./img/queensu.jpg" alt="queens university"/>
-		</a>
+		
 	</footer>
 	
 </body>

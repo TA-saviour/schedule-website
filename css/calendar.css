@@ -114,11 +114,12 @@ body {font-family: Verdana, sans-serif;}
 	height: 400px;
 }
 #days li #today{
-	color: #ffd699;	
+	color: #ffffff;	
+	background-color: #ff9900;
 }
 
 #days li #today:hover{
-	color: #ffc266;
+	color: #ffffff;
 	transform: scale(2.5);	
 	transition-duration: 0.3s;	
 }

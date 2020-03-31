@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CISC325</title>
+	<meta charset="utf-8" />
+	<meta name="Yu" content=""/>
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif|Josefin+Sans" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/style.css">		
+	<link rel="stylesheet" href="css/responsive.css">	
+	<link rel="stylesheet" href="css/taPage.css">
+	<script src="./js/data.js"></script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>		
+				<li><a href="./index.html">Home</a></li>
+				<li><a href="./login.html">Login</a></li>
+			</ul>		
+		</nav>
+	</header>
+
+	<article id="main-content">
+		<h2 id = "greating"></h2>
+		
+		<div id = "main">
+			
+			<table id = "queue" align="left">
+				<col width = "60%">
+				<col width = "40%">
+				<tr>
+					<th>Student</th>
+					<th>Notification</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			
+			<table id = "scheduel" align="right">
+				<col width = "20%">
+				<col width = "20%">
+				<col width = "20%">
+				<col width = "20%">
+				<col width = "20%">
+				<tr>
+					<th>Mon</th>
+					<th>Tue</th>
+					<th>Wed</th>
+					<th>Thu</th>
+					<th>Fri</th>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	
+	</article> <!-- #main-content -->
+	<script>
+		var user = sessionStorage.getItem("user");
+		document.getElementById("greating").innerHTML = "Welcome, " + user;
+		//left table
+		function loadInfo(){
+			var eventData = sessionStorage.getItem("eventData");
+			var arrItem = eventData.split("//");
+			var newArr = [];
+			for(var i = 0;i < arrItem.length;i++){
+				var subs = arrItem[i].split(",");
+				var newSub = [subs[0],subs[2],subs[1]];//[name,TA,date]
+				newArr.push(newSub);
+			}
+			return newArr;
+		}
+		
+		function clear(){
+			var table = document.getElementById("queue");
+			var rowCount = document.getElementById('queue').rows.length;
+			for(var i=1;i<rowCount;i++){
+				var colCount = document.getElementById('queue').rows[i].cells.length;
+				for(var j=0;j<colCount;j++){
+					table.rows[i].cells[j].innerHTML = "";
+					while (table.rows[i].cells[j].hasChildNodes()) {
+						table.rows[i].cells[j].removeChild(table.rows[i].cells[j].lastChild);
+					}
+				}
+			}
+		}
+
+		function left(){
+			clear();
+			var queue = loadInfo();
+			var left = document.getElementById("queue");
+			var count = 1;
+			for(var j=1;j<queue.length;j++){
+				var date = queue[j][2].split("-");
+				var day = (new Date(date[0],date[1]-1,date[2]-1)).getDay();
+				if(queue[j][1] == user.split(" ")[0] && day == theDay ){
+					left.rows[count].cells[0].innerHTML = queue[j][0];
+					var button = document.createElement("BUTTON"); 
+					button.textContent = "Send";
+					button.setAttribute('class', 'send');
+					left.rows[count].cells[1].appendChild(button);
+					count = count + 1;
+				}	
+			}
+			setButtons();
+		}
+		
+		function setButtons(){
+				var el = document.getElementsByClassName("send");
+				for(var i = 0;i < el.length;i++){
+					el[i].addEventListener("click",clickSend);
+				}
+		}
+		
+		function clickSend(){
+			confirm("Notification sent.");
+		}
+		
+		//right table
+		var right = document.getElementById("scheduel");
+		var temp1 = makeupForm;
+		var temp2 = [];
+		for(var i=1;i<6;i++){
+			temp2 = temp2.concat(temp1[i]);
+		}
+		
+		for(var i = 0;i<temp2.length;i++){
+			temp2[i].splice(2,1);
+		}
+		//remove people in queue
+		var slots = [];
+		for(var i = 0;i<temp2.length;i++){
+			if(temp2[i][0] == user.split(" ")[0]){
+				slots.push(temp2[i]);
+			}
+		}
+		//add days number
+		var index = 0;
+		for(var i=0;i<temp1.length;i++){
+			for(var j=0;j<temp1[i].length;j++){
+				if(temp1[i][j][0].includes(user.split(" ")[0]) == true){
+					slots[index].push(i);
+					index = index + 1;
+				}
+			}
+		}
+		index = 0;
+		
+		var dict = {
+			"8:30 " : 1,
+			"10:30 " : 2,
+			"12:30 " : 3,
+			"2:30 " : 4,
+			"4:30 " : 5,
+			"6:30 " : 6,
+		}
+		var theDay = 0; 
+		
+		for(var i=0;i<slots.length;i++){
+			var start = dict[slots[i][1].split("-")[0]];
+			var row = slots[i][2];
+			right.rows[start].cells[row-1].style.borderBottom = "thin solid white";
+			var button = document.createElement("BUTTON"); 
+			button.textContent = slots[i][1];
+			button.setAttribute('class', 'slots');
+			button.setAttribute('id', i);
+			right.rows[start].cells[row-1].appendChild(button);
+		}
+		
+		var el = document.getElementsByClassName("slots");
+		
+		for(var i = 0;i < el.length;i++){
+				el[i].addEventListener("click",clickSlots);
+		}
+			
+		function clickSlots(){
+			var target = event.target;
+			theDay = slots[target.id][2] - 1;//like monday
+			
+			left();
+		}
+	</script>
+	<footer>
+		
+	</footer>
+	
+</body>
+</html>

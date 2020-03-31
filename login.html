@@ -25,20 +25,33 @@
 		
 		<h1>Login</h1>
 
-			<form action="/action_page.php">
-				<label for="fname">Username:</label>
+			<div>
+				<label for="fname">First name:</label>
 				<input type="text" id="fname" name="fname"><br><br>
-				<label for="lname">Password:</label>
+				<label for="lname">Last name:</label>
 				<input type="text" id="lname" name="lname"><br><br>
-				<button style ="border-radius: 15%;" ; class="loginButton">Login</button>
-			</form>
+				<button style ="border-radius: 15%;" ; class="loginButton" onclick = "login()">Login</button>
+			</div>
 
-			<p>submit username "student" to log in as a student. <br> submit username "TA" to log in as a TA.</p>
+			<p>submit full name to log in.</p>
 		
 		
 	
 	</article> <!-- #main-content -->
-	
+	<script>
+		
+		var taList = ["Jane Clark","Jack Ma","Kate Barr"];
+		
+		function login(){
+			var userName =  document.getElementById("fname").value + " " + document.getElementById("lname").value;
+			sessionStorage.setItem("user",userName);
+			if(taList.includes(userName) == true){
+				window.location.href = "./taScheduel.html";
+			}else{
+				window.location.href = "./studentScheduel.html";
+			}
+		}
+	</script>
 	<footer>
 		<a href="https://queensu.ca">
 				<img src="./img/queensu.jpg" alt="queens university"/>
