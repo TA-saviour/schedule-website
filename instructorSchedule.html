@@ -33,7 +33,7 @@
 
 	<article id="main-content">
 		<h2 id = "greating"></h2>
-		
+		<h2 id = "week"></h2>
 		<div id = "main">
 			
 			<table id = "queue" align="left">
@@ -154,6 +154,7 @@
 	<script>
 		var user = sessionStorage.getItem("user");
 		document.getElementById("greating").innerHTML = "Welcome, " + user;
+		document.getElementById("week").innerHTML = "Week of " + new Date().toLocaleDateString();
 		//left table
 		function loadInfo(){
 			var eventData = sessionStorage.getItem("eventData");
