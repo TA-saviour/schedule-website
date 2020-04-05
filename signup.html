@@ -47,6 +47,8 @@
 			<input type="text" id="ta" name="inst" readonly><br><br>
 			<label for="time">Time:</label>
 			<input type="text" id="time" name="time" readonly><br><br>
+			<label for="email">Email:</label>
+			<input id="email" name="email"><br><br>
 			<label for="question">(Optional) Discussion Topic Question/Description:</label>
 			<textarea id="question" name="question"></textarea>
 			<br></br>
@@ -135,6 +137,9 @@
 			if (!document.getElementById("ta").value){
 				str += "You must select an instructor! \n";
 			}
+			if (!document.getElementById('email').value){
+				str += "You must enter your email! \n";
+			}
 			if (str){
 				alert(str);
 				return ;
@@ -143,6 +148,7 @@
 			signupInfo.push(document.getElementById("date").value);
 			signupInfo.push(document.getElementById("ta").value);
 			signupInfo.push(document.getElementById("time").value);
+			signupInfo.push(document.getElementById("email").value);
 			signupInfo.push(document.getElementById("question").value);
 			var newStr = JSON.parse(sessionStorage.getItem("eventData"));
 			if (!newStr) newStr = [];
