@@ -17,6 +17,15 @@
 			<ul>		
 				<li><a href="./index.html">Home</a></li>
 				<li><a href="./login.html">Login</a></li>
+				<li onclick = "
+					if (sessionStorage.getItem('user')){
+						sessionStorage.removeItem('user');
+						alert('You have successfully logged out!');
+					} else {
+						alert('You have not logged in yet!');
+					}
+					"><a href="./index.html">Logout</a>
+				</li>
 			</ul>		
 		</nav>
 	</header>
@@ -33,7 +42,9 @@
 				<button style ="border-radius: 15%;" ; class="loginButton" onclick = "login()">Login</button>
 			</div>
 
-			<p>submit full name to log in.</p>
+			<p>Submit full name to log in.</p>
+			
+			<p> TA names includes: Jane Clark, Kate Barr</p>
 		
 		
 	
@@ -43,11 +54,23 @@
 		var taList = ["Jane Clark","Jack Ma","Kate Barr"];
 		
 		function login(){
+			if (sessionStorage.getItem("user")){
+				alert("You have already logged in!");
+				window.location.href = "./index.html";
+				return ;
+			}
 			var userName =  document.getElementById("fname").value + " " + document.getElementById("lname").value;
 			sessionStorage.setItem("user",userName);
-			if(taList.includes(userName) == true){
-				window.location.href = "./instructorSchedule.html";
-			}else{
+			var flag = false;
+			for (var i = 0; i < taList.length; i ++){
+				if (userName.toUpperCase() == taList[i].toUpperCase()){
+					sessionStorage.setItem("TA", true);
+					window.location.href = "./instructorSchedule.html";
+					flag = true;
+					break;
+				}
+			}
+			if (flag == false){
 				window.location.href = "./studentSchedule.html";
 			}
 		}

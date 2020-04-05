@@ -18,12 +18,22 @@
 			<ul>		
 				<li><a href="./index.html">Home</a></li>
 				<li><a href="./login.html">Login</a></li>
+				<li onclick = "
+					if (sessionStorage.getItem('user')){
+						sessionStorage.removeItem('user');
+						alert('You have successfully logged out!');
+					} else {
+						alert('You have not logged in yet!');
+					}
+					"><a href="./index.html">Logout</a>
+				</li>
 			</ul>		
 		</nav>
 	</header>
 
 	<article id="main-content">
 		<h2 id = "greating"></h2>
+		<a href='./calendar.html'>Calendar and Sign Up</a>
 		<div id = "main">
 			<table id = "event" align = "center">
 				<col width = "50%">
@@ -36,16 +46,6 @@
 					<td>Date</td>
 					<td>Time</td>
 					<td>Instructor</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
 				</tr>
 				<tr>
 					<td></td>
@@ -128,9 +128,6 @@
 			}
 		}
 	</script>
-	
-	<footer>
-	</footer>
 	
 </body>
 </html>

@@ -17,6 +17,15 @@
 			<ul>		
 				<li><a href="./index.html">Home</a></li>
 				<li><a href="./login.html">Login</a></li>
+				<li onclick = "
+					if (sessionStorage.getItem('user')){
+						sessionStorage.removeItem('user');
+						alert('You have successfully logged out!');
+					} else {
+						alert('You have not logged in yet!');
+					}
+					"><a href="./index.html">Logout</a>
+				</li>
 			</ul>		
 		</nav>
 	</header>
@@ -25,16 +34,14 @@
 	
 		<h1 id="page-title">CISC 325 Instructor Schedule</h1>
 		
-		<section>
-			<h2><a href="./calendar.html">Calendar and Sign Up</a></h2>
-				
-		</section>
+		<h2 id = "sign-up">Please <a href = './login.html'>Log in</a> before Signing Up</h2>
 
 		<section>
 			<h2>Instructor List</h2>
 			<ul>
 				<li><a href="./Instructorinfo1.html">Jane Clark</a></li>
 				<li><a href="./Instructorinfo2.html">Kate Barr</a></li>
+				<li><a href="./Instructorinfo3.html">Jack Ma</a></li>
 			</ul>
 		</section>
 	
@@ -46,5 +53,24 @@
 		</a>
 	</footer>
 	
+	<script>
+		var user = sessionStorage.getItem("user");
+		if (user){
+			if (!sessionStorage.getItem("TA")){
+				document.getElementById("sign-up").innerHTML = "Welcome, " + user 
+				+ "<br><br><a href='./calendar.html'>Calendar and Sign Up</a>"
+				+ "<br><br><a href='./studentSchedule.html'>Your schedule</a>";
+			} else {
+				document.getElementById("sign-up").innerHTML = "Welcome, " + user 
+				+ "<br><br><a href='./calendar.html'>Calendar and Sign Up</a>"
+				+ "<br><br><a href='./instructorSchedule.html'>Your schedule</a>";
+			}
+		}
+		var data = sessionStorage.getItem('eventData');
+		if (!data){
+			sessionStorage.setItem("eventData", 'null//Kalsa Yu,2020-4-13,Jane,8:30 - 10:30,//Kalsa Yu,2020-4-16,Kate,1:30 - 3:30,');
+		}
+
+	</script>
 </body>
 </html>

@@ -16,6 +16,15 @@
 			<ul>		
 				<li><a href="./index.html">Home</a></li>
 				<li><a href="./login.html">Login</a></li>
+				<li onclick = "
+					if (sessionStorage.getItem('user')){
+						sessionStorage.removeItem('user');
+						alert('You have successfully logged out!');
+					} else {
+						alert('You have not logged in yet!');
+					}
+					"><a href="./index.html">Logout</a>
+				</li>
 			</ul>		
 		</nav>
 	</header>
