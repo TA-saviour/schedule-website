@@ -36,17 +36,19 @@
 		<a href='./calendar.html'>Calendar and Sign Up</a>
 		<div id = "main">
 			<table id = "event" align = "center">
-				<col width = "30%">
 				<col width = "20%">
 				<col width = "20%">
 				<col width = "10%">
+				<col width = "10%">
+				<col width = "10%">
 				<tr>
-					<th colspan = "4">Upcoming appointment</th>
+					<th colspan = "5">Upcoming appointment</th>
 				</tr>
 				<tr id = "title">
 					<td>Date</td>
 					<td>Time</td>
 					<td>Instructor</td>
+					<td>Queue Position</td>
 					<td>Actions</td>
 				</tr>
 				<tr>
@@ -54,20 +56,10 @@
 					<td></td>
 					<td></td>
 					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -78,14 +70,31 @@
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
 				</tr>
 				<tr>
 					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
+					<td></td>
 				</tr>
 				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td></td>
 					<td></td>
 					<td></td>
 					<td></td>
@@ -124,33 +133,41 @@
 		}
 		
 		time.sort(function(a, b){return a - b});
+		console.log(time);
+		console.log(temp3);
 		var table = document.getElementById("event");
 		for(var i=0;i<time.length;i++){
-			for(var j=0;j<time.length;j++){
-				var str = "";
-				var subs = temp3[j][1].split("-");
-				if(time[i] == str.concat(subs[0],subs[1],subs[2])){
-					table.rows[i+2].cells[0].innerHTML = temp3[j][1];
-					table.rows[i+2].cells[1].innerHTML = temp3[j][3];
-					table.rows[i+2].cells[2].innerHTML = temp3[j][2];
-					var button = document.createElement("button"); 
-					button.textContent = "Cancel";
-					button.setAttribute('class', 'slots');
-					button.setAttribute('id', i);
-					button.addEventListener("click", function(){
-						for (var i = 0; i < temp2.length; i ++){
-							var table = document.getElementById("event");
-							if (temp2[i][1] == table.rows[parseInt(this.id)+2].cells[0].innerHTML && temp2[i][3] == table.rows[parseInt(this.id)+2].cells[1].innerHTML){
-								temp2.splice(i, 1);
-								sessionStorage.setItem("eventData", JSON.stringify(temp2));
-								alert('Appointment has been cancelled.');
-								window.location.href = "./studentSchedule.html";
-								return ;
-							}
-						}
-					})
-					table.rows[i+2].cells[3].appendChild(button);
+			var str = "";
+			var subs = temp3[i][1].split("-");
+			if(time[i] == str.concat(subs[0],subs[1],subs[2])){
+				table.rows[i+2].cells[0].innerHTML = temp3[i][1];
+				table.rows[i+2].cells[1].innerHTML = temp3[i][3];
+				table.rows[i+2].cells[2].innerHTML = temp3[i][2];
+				var count = 1;
+				for (var f = 0; f < temp2.length; f ++){
+					if (temp3[i][1] == temp2[f][1] && temp3[i][2] == temp2[f][2] && temp3[i][3] == temp2[f][3]){
+						if (temp3[i][0] == temp2[f][0]) break;
+						else count ++;
+					}
 				}
+				table.rows[i+2].cells[3].innerHTML = count;
+				var button = document.createElement("button"); 
+				button.textContent = "Cancel";
+				button.setAttribute('class', 'slots');
+				button.setAttribute('id', i);
+				button.addEventListener("click", function(){
+					for (var i = 0; i < temp2.length; i ++){
+						var table = document.getElementById("event");
+						if (temp2[i][1] == table.rows[parseInt(this.id)+2].cells[0].innerHTML && temp2[i][3] == table.rows[parseInt(this.id)+2].cells[1].innerHTML){
+							temp2.splice(i, 1);
+							sessionStorage.setItem("eventData", JSON.stringify(temp2));
+							alert('Appointment has been cancelled.');
+							window.location.href = "./studentSchedule.html";
+							return ;
+						}
+					}
+				})
+				table.rows[i+2].cells[4].appendChild(button);
 			}
 		}
 	</script>
