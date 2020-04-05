@@ -71,6 +71,7 @@
 				}
 			}
 			if (flag == false){
+				if (sessionStorage.getItem("TA")) sessionStorage.removeItem('TA');
 				window.location.href = "./studentSchedule.html";
 			}
 		}
