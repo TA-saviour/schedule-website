@@ -91,7 +91,11 @@
 					month = month - 1;
 					document.getElementById("month").innerHTML = dict[month];
 				}
+				if (month == today.getMonth() + 1){
+					document.getElementById("prev").style.visibility = "hidden";
+				}
 				days();
+				setButtons();
 			}
 			
 			function next(){
@@ -104,7 +108,9 @@
 					month = month + 1;
 					document.getElementById("month").innerHTML = dict[month];
 				}
+				document.getElementById("prev").style.visibility = "visible";
 				days();
+				setButtons();
 			}
 			
 			var normal = [31,28,31,30,31,30,31,31,30,31,30,31];
@@ -163,6 +169,7 @@
 		</div>
 		
 		<script>
+			document.getElementById("prev").style.visibility = "hidden";
 			setButtons();
 			function setButtons(){
 				var el = document.getElementsByClassName("dates");
@@ -174,12 +181,10 @@
 			}
 			
 			function loadInfo(){
-				var eventData = sessionStorage.getItem("eventData");
-				var arrItem = eventData.split("//");
+				var eventData = JSON.parse(sessionStorage.getItem("eventData"));
 				var newArr = [];
-				for(var i = 0;i < arrItem.length;i++){
-					var subs = arrItem[i].split(",");
-					var newSub = [subs[1],subs[2]];//[date,TA]
+				for(var i = 0;i < eventData.length;i++){
+					var newSub = [eventData[i][1],eventData[i][2]];//[date,TA]
 					newArr.push(newSub);
 				}
 				return newArr;
@@ -192,7 +197,7 @@
 				var theDay = (new Date(year, month - 1,target.textContent).getDay());
 				var targetStr = year + "-" + month + "-" + target.textContent;
 				var str = "";
-				var folder = makeupForm;//TA weekly scheduel in js file
+				var folder = makeupForm;//TA weekly schedule in js file
 				for(var i=0;i<queue.length;i++){//element in queue
 					if(queue[i][0] == targetStr){//if dates are same
 						for(var j=0;j<folder[theDay].length;j++){
@@ -202,13 +207,15 @@
 						}
 					}
 				}
-				for(var i=0;i<count.length;i++){
+				for (var i = 0; i < folder[theDay].length; i ++){
 					if(count[i] != 0){
 						if (count[i] == 1){
-							str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ", " + count[i] + " person in queue.<br>";	
+							str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ": " + count[i] + " person in queue.<br>";	
 						} else {
-							str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ", " + count[i] + " people in queue.<br>";	
+							str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ": " + count[i] + " people in queue.<br>";	
 						}
+					} else {
+						str = str + folder[theDay][i][0] + " " + folder[theDay][i][1] + ": nobody in queue.<br>"
 					}
 				}
 				if(str != ""){

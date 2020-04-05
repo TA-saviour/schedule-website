@@ -51,6 +51,7 @@
 			<textarea id="question" name="question"></textarea>
 			<br></br>
 			<button style ="border-radius: 15%" ; id="signUpButton" onclick = "submit()">Submit</button>
+			<button style ="border-radius: 15%" ; id="signUpButton" onclick = "window.location.href = './calendar.html';">Cancel</button>
 		</div>
 		<div id = "verticalLine"></div>
 		
@@ -127,23 +128,29 @@
 		
 		function submit(){
 			var signupInfo = [];
+			var str = "";
+			if (!document.getElementById("Sname").value){
+				str += "Please enter your name. \n";
+			}
+			if (!document.getElementById("ta").value){
+				str += "You must select an instructor! \n";
+			}
+			if (str){
+				alert(str);
+				return ;
+			}
 			signupInfo.push(document.getElementById("Sname").value);
 			signupInfo.push(document.getElementById("date").value);
 			signupInfo.push(document.getElementById("ta").value);
 			signupInfo.push(document.getElementById("time").value);
 			signupInfo.push(document.getElementById("question").value);
-			var infoStr = "" + signupInfo;
-			var newStr = ""
-			newStr = newStr + sessionStorage.getItem("eventData");
-			if(newStr.includes(infoStr) == true){
-				confirm("You have made an appointment at this time.")
+			var newStr = JSON.parse(sessionStorage.getItem("eventData"));
+			if (!newStr) newStr = [];
+			if(newStr && newStr.includes(signupInfo)){
+				confirm("You have already made an appointment at this time.")
 			}else{
-				if(newStr == "" || newStr == null){
-					newStr = signupInfo;
-				}else{
-					newStr = newStr +  "//" + signupInfo;
-				}
-				sessionStorage.setItem("eventData",newStr);
+				newStr.push(signupInfo);
+				sessionStorage.setItem("eventData", JSON.stringify(newStr));
 				confirm("Successful! You have made an appointment.");
 				window.location.href = "./calendar.html";
 			}
