@@ -17,8 +17,8 @@
 		<nav>
 			<ul>		
 				<li><a href="./index.html">Home</a></li>
-				<li><a href="./login.html">Login</a></li>
-				<li onclick = "
+				<li id = "login"><a href="./login.html">Login</a></li>
+				<li id = "logoff" onclick = "
 					if (sessionStorage.getItem('user')){
 						sessionStorage.removeItem('user');
 						alert('You have successfully logged out!');
@@ -169,7 +169,17 @@
 		</div>
 		
 		<script>
+		if (sessionStorage.getItem('user')){
+				document.getElementById("login").style.display = "none";
+			} else {
+				document.getElementById("logoff").style.display = "none";
+			}
 			document.getElementById("prev").style.visibility = "hidden";
+			if (sessionStorage.getItem('user')){
+				document.getElementById("login").style.display = "none";
+			} else {
+				document.getElementById("logoff").style.display = "none";
+			}
 			setButtons();
 			function setButtons(){
 				var el = document.getElementsByClassName("dates");
