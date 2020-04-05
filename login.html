@@ -63,6 +63,14 @@
 				window.location.href = "./index.html";
 				return ;
 			}
+			if (!document.getElementById("fname").value){
+				alert("Please enter your first name!");
+				return ;
+			}
+			if (!document.getElementById("lname").value){
+				alert("Please enter your last name!");	
+				return ;
+			}
 			var userName =  document.getElementById("fname").value + " " + document.getElementById("lname").value;
 			sessionStorage.setItem("user",userName);
 			var flag = false;

@@ -164,7 +164,7 @@
 	<footer>
 		<div id = "timeSlots">
 			<ul>
-				<li id = "slots"></li>
+				<li id = "slots">Hover over a date to check its hours.<br>Click on the date to book an appointment.</li>
 			</ul>
 		</div>
 		
@@ -175,15 +175,11 @@
 				document.getElementById("logoff").style.display = "none";
 			}
 			document.getElementById("prev").style.visibility = "hidden";
-			if (sessionStorage.getItem('user')){
-				document.getElementById("login").style.display = "none";
-			} else {
-				document.getElementById("logoff").style.display = "none";
-			}
 			setButtons();
 			function setButtons(){
 				var el = document.getElementsByClassName("dates");
 				for(var i = 0;i < el.length;i++){
+					if (parseInt(el[i].innerHTML) < today.getDate()) continue;
 					el[i].addEventListener("mouseover",showSlots);	
 					el[i].addEventListener("mouseout",closeSlots);
 					el[i].addEventListener("click",clickDates);
@@ -232,7 +228,7 @@
 				if(str != ""){
 					document.getElementById("slots").innerHTML = str;
 				}else{
-					document.getElementById("slots").innerHTML = "currently no people in queue.<br>";
+					document.getElementById("slots").innerHTML = "No office hours on this date.";
 				}
 			}
 			
