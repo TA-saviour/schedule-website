@@ -231,7 +231,7 @@
 		}
 		
 		//right table
-		var right = document.getElementById("scheduel");
+		var right = document.getElementById("schedule");
 		var temp1 = makeupForm;
 		var temp2 = [];
 		for(var i=1;i<6;i++){
@@ -244,7 +244,7 @@
 		//remove people in queue
 		var slots = [];
 		for(var i = 0;i<temp2.length;i++){
-			if(temp2[i][0] == user.split(" ")[0]){
+			if(temp2[i][0].toUpperCase() == user.split(" ")[0].toUpperCase()){
 				slots.push(temp2[i]);
 			}
 		}
@@ -252,7 +252,7 @@
 		var index = 0;
 		for(var i=0;i<temp1.length;i++){
 			for(var j=0;j<temp1[i].length;j++){
-				if(temp1[i][j][0].includes(user.split(" ")[0]) == true){
+				if(temp1[i][j][0].toUpperCase().includes(user.split(" ")[0].toUpperCase())){
 					slots[index].push(i);
 					index = index + 1;
 				}
@@ -274,7 +274,7 @@
 			var start = dict[slots[i][1].split("-")[0]];
 			var row = slots[i][2];
 			right.rows[start].cells[row-1].style.borderBottom = "thin solid white";
-			var button = document.createElement("BUTTON"); 
+			var button = document.createElement("button"); 
 			button.textContent = slots[i][1];
 			button.setAttribute('class', 'slots');
 			button.setAttribute('id', i);
