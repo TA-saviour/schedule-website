@@ -165,7 +165,7 @@
 			var eventData = JSON.parse(sessionStorage.getItem("eventData"));
 			var newArr = [];
 			for(var i = 0;i < eventData.length;i++){
-				var newSub = [eventData[i][0],eventData[i][2],eventData[i][1],eventData[i][4]];//[name,TA,date,comment]
+				var newSub = [eventData[i][0],eventData[i][2],eventData[i][1],eventData[i][5]];//[name,TA,date,comment]
 				newArr.push(newSub);
 			}
 			return newArr;

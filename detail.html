@@ -41,10 +41,10 @@
 	</article> <!-- #main-content -->
 	<script>
 	if (sessionStorage.getItem('user')){
-				document.getElementById("login").style.display = "none";
-			} else {
-				document.getElementById("logoff").style.display = "none";
-			}
+			document.getElementById("login").style.display = "none";
+		} else {
+			document.getElementById("logoff").style.display = "none";
+		}
 		
 		var str = sessionStorage.getItem("detail");	
 		document.getElementById("detail").innerHTML = str;
@@ -52,7 +52,7 @@
 		
 	</script>
 	<footer>
-		
+		<button type="Button" ><a href="./instructorSchedule.html">Back</a></button>
 	</footer>
 	
 </body>

@@ -169,6 +169,20 @@
 		</div>
 		
 		<script>
+			var dict = {
+				1 : "January",
+				2 : "February",
+				3 : "March",
+				4 : "April",
+				5 : "May",
+				6 : "June",
+				7 : "July",
+				8 : "August",
+				9 : "September",
+				10 : "October",
+				11 : "November",
+				12 : "December"
+			}	
 		if (sessionStorage.getItem('user')){
 				document.getElementById("login").style.display = "none";
 			} else {
@@ -179,7 +193,7 @@
 			function setButtons(){
 				var el = document.getElementsByClassName("dates");
 				for(var i = 0;i < el.length;i++){
-					if (parseInt(el[i].innerHTML) < today.getDate()) continue;
+					if (parseInt(el[i].innerHTML) < today.getDate() && document.getElementById("month").innerHTML == dict[today.getMonth() + 1]) continue;
 					el[i].addEventListener("mouseover",showSlots);	
 					el[i].addEventListener("mouseout",closeSlots);
 					el[i].addEventListener("click",clickDates);
