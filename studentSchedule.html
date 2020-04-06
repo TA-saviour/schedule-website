@@ -133,8 +133,6 @@
 		}
 		
 		time.sort(function(a, b){return a - b});
-		console.log(time);
-		console.log(temp3);
 		var table = document.getElementById("event");
 		for(var i=0;i<time.length;i++){
 			var str = "";
@@ -158,7 +156,8 @@
 				button.addEventListener("click", function(){
 					for (var i = 0; i < temp2.length; i ++){
 						var table = document.getElementById("event");
-						if (temp2[i][1] == table.rows[parseInt(this.id)+2].cells[0].innerHTML && temp2[i][3] == table.rows[parseInt(this.id)+2].cells[1].innerHTML){
+						console.log(temp2);
+						if (temp2[i][1] == table.rows[parseInt(this.id)+2].cells[0].innerHTML && temp2[i][3] == table.rows[parseInt(this.id)+2].cells[1].innerHTML && temp2[i][0].toUpperCase() == sessionStorage.getItem("user").toUpperCase()){
 							temp2.splice(i, 1);
 							sessionStorage.setItem("eventData", JSON.stringify(temp2));
 							alert('Appointment has been cancelled.');
